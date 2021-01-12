@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Footer></Footer>
+    <Footer v-show="$store.state.global.is_show"></Footer>
     <router-view/>
   </div>
 </template>
@@ -10,6 +10,8 @@ import Vue from 'vue'
 export default {
   components:{
     Footer
+  },
+  mounted(){
   }
 }
 </script>
