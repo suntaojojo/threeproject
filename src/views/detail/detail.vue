@@ -12,23 +12,11 @@
       <p>【0元领】《恋词序列二：考研英语真题词汇5500词》配套视频课</p>
       <p><span>朱伟</span><span>限时免费</span></p>
       <p>共141个课时</p>
-      <!-- <van-count-down :time="time" format="距离停售：DD 天 HH 时 mm 分 ss 秒" /> -->
-      <van-swipe-cell>
-       <van-card
-         num="2"
-         price="2.00"
-         desc="描述信息"
-         title="商品标题"
-         class="goods-card"
-         thumb="../../assets/downlo.png"
-       />
-       <template #right>
-         <van-button square text="删除" type="danger" class="delete-button" />
-       </template>
-     </van-swipe-cell>
-
-   </div>
+      <van-count-down :time="time" format="距离停售：DD 天 HH 时 mm 分 ss 秒" />
+      
+     </div>
   </div>
+
   
 </template>
 
@@ -52,6 +40,7 @@ export default {
 .middle{
   height: 200px;
   padding:10px;
+  padding-bottom:50px;
 }
 .middle>img{
   height:100%;
@@ -74,6 +63,17 @@ export default {
 .middle>p:nth-of-type(2)>span:nth-of-type(2){
   color: darkgreen;
   font-size: 20px;
+}
+.middle>h4{
+  font-size:20px;
+  border: 1px solid blue;
+  margin-bottom: 0;
+  line-height: 40px;
+}
+.middle>div>p>img{
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 .goods-card {
   margin: 0;
