@@ -37,16 +37,21 @@ export default {
        float:left;
       .nav-left-left{
         border-left: 5px solid #F09581;
-        font-size:20px;
+        font-size:15px;
         padding-left:5px;
       }
-      .nav-right-right{
+      .nav-left-right{
          color:#999999;
+         span{
+          font-size:13px;
+         }
        }
      }
      .nav-right{
        float:right;
        color:#F09581;
+       font-size:13px;
+       margin-top:8px;
      }
    }
 </style>

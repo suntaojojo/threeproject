@@ -48,7 +48,7 @@ export default {
     border-radius:15px;
     margin:15px;
     background:white;
-    box-shadow: 3px 2px  0px gray;
+    box-shadow: 3px 2px  0px #F5F5F5;
 
   }
   .van-card__header .van-card__content .title{

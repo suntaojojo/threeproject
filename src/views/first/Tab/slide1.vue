@@ -33,17 +33,19 @@
         全部 >
       </span>
       <div class="nav-content" slot="content">
-        <van-grid :column-num="2" v-for="(item , index) in freeList" :key="index">
-          <van-grid-item  :icon="item.course_cover" :text="item.title">
-            <div  slot="text">
-              <p class="content-title">{{item.title}}</p>
-              <div class="content-footer">
-                <p class="content-role">{{item.teacher_name}}</p>
-                <!-- 这里时间要使用中间件进行更改一下 -->
-                <p class="content-time">2020.12.25 - 2021.05.31</p>
+        <van-grid :column-num="2" :key="1" >
+            <template v-for="(item , index) in freeList">
+          <van-grid-item  :icon="item.course_cover" :text="item.title" >
+              <div  slot="text">
+                <p class="content-title">{{item.title}}</p>
+                <div class="content-footer">
+                  <p class="content-role">{{item.teacher_name}}</p>
+                  <!-- 这里时间要使用中间件进行更改一下 -->
+                  <p class="content-time">2020.12.25 - 2021.05.31</p>
+                </div>
               </div>
-            </div>
           </van-grid-item>
+            </template>
         </van-grid>
       </div>
     </smallnav>
@@ -85,7 +87,6 @@ Vue.use(VueLazyload, {
 });
 import smallnav from '@/components/Navigator/smallnav'
 import uri from '@/config/uri'  
-/* import modeList from '../../../router/modules/all/modeList' */
 import fullCart from '@/components/Card/fullCart'
 import { Grid, GridItem } from 'vant';
 
@@ -162,10 +163,14 @@ export default {
    }
    .content-footer{
      width:100%;
-     border-top:1px solid gray;
+     border-top:1px solid #F8F8F8;
    }
     .hotcourse{
       margin-bottom:60px;
     }
+   .content-title{
+     height:18px;
+     overflow:hidden;
+   }
     
 </style>

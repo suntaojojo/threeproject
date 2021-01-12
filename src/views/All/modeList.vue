@@ -1,7 +1,7 @@
 <template>
   <div>
     <van-nav-bar
-      title="免费公开课"
+      :title='mainTitle'
       left-arrow
       @click-left="onClickLeft"
     >
@@ -9,12 +9,14 @@
         <span class="arrows" >&lt;</span>
       </template>
     </van-nav-bar>
+    <div class="virtual">
     <firstplay :key="title.length">
       <template v-for="(item,index) in title">
           <div class="swiper-slide" @click="change('Aslide0' , $event)" :key="index">{{item.title}}</div>
       </template>
     </firstplay>
     <component :is="current"></component>
+    </div>
   </div>
 </template>
 
@@ -32,6 +34,7 @@ export default {
       title:[],
       current:"Aslide0",
       bigTitle:"",
+      mainTitle:'',
     }
   },
   components:{
@@ -42,10 +45,19 @@ export default {
     console.log(this.$route.query.id)
     if(this.$route.query.id == 32){
       this.$http.get(uri.allFreecourseTitle).then(ret=>{
-        console.log(ret.data.data)
+        console.log(ret.data.data , '找个是标题的地方')
         this.title = ret.data.data
+        this.mainTitle = ret.data.data[ret.data.data.length-1].title
+        console.log(this.mainTitle)
       })
-    }
+    }else{
+      this.$http.get(uri.allHotcourseTitle).then((ret)=>{
+        console.log(ret.data.data , '找个是标题的地方')
+        this.title = ret.data.data
+        this.mainTitle = '热门好课'
+        console.log(this.mainTitle)
+      }
+    )}
   },
   methods:{
     change(tab , direct){
@@ -61,7 +73,6 @@ export default {
       direct.target.style.color = '#F19682'
     },
     onClickLeft(){
-      console.log('这里的信息我要返回到上一页')
       this.$router.back()
     }
   },
@@ -75,6 +86,9 @@ export default {
   }
   .swiper-slide{
     font-size:14px;
+  }
+  .virtual{
+    margin-bottom:80px;
   }
 
 </style>
