@@ -13,7 +13,7 @@
         
       </div>
       <template #action>
-        <van-icon class-prefix="iconfont icon-renwu" slot="icon" @click="change"></van-icon>
+        <van-icon class-prefix="iconfont icon-icon_renwu" slot="icon" @click="change"></van-icon>
       </template>
     </van-search>
 
