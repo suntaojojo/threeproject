@@ -11,7 +11,9 @@
       <span class="role">
         <slot name="teacher"></slot>
       </span>
-      <p class="time">2020.12.31 - 2023.12.31</p>
+      <p class="time" >
+        <slot name="time">2020.12.31 - 2023.12.31</slot> 
+      </p>
     </template>
     <template #footer>
       <div class="buynum">
