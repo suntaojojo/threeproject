@@ -10,7 +10,6 @@
   </van-nav-bar>
 <van-checkbox-group v-model="result" ref="checkboxGroup" >
   <div id="big">
-      <van-checkbox id="meddil" name="b"></van-checkbox>
       <van-checkbox id="meddil" name="a" label-disabled>
         <template #default>
           <img class="cartImg"  src="https://weilinjiaoyu.oss-cn-hangzhou.aliyuncs.com/uploads/image/2021de6dzll81610416213.png" width="80px" height="80px" alt="">
