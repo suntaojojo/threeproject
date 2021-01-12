@@ -14,5 +14,7 @@ export default {
 }
 </script>
 <style lang="scss">
-
+  .van-hairline--top-bottom{
+    margin-top:200px;
+  }
 </style>

@@ -39,5 +39,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
+  .van-tabbar{
+    margin-top:80px;
+  }
 </style>
