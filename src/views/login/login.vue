@@ -2,7 +2,7 @@
     <van-form @submit="onSubmit">
       <div class="logo">
         <p>
-           <van-icon name="arrow-left" size="2rem"/>
+           <van-icon name="arrow-left" size="2rem" @click="back()"/>
         </p>
          <div>
            <img src="../../assets/download.png">
@@ -66,10 +66,19 @@ export default {
     onSubmit(values) {
       console.log('submit', values);
     },
+    back(){
+      this.$router.back()
+    }
+
   },
+  created(){
+    this.$store.commit('global/isShow' , false)
+  },
+  beforeDestroy(){
+    this.$store.commit('global/isShow' , true)
+  }
 }
 </script>
-
 <style scoped>
 .logo{
   width:100%;
@@ -104,4 +113,5 @@ export default {
 .footer>p>a{
    color:black;
 }
+
 </style>
