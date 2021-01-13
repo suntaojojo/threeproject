@@ -17,6 +17,15 @@
     </firstplay>
     <component :is="current"></component>
     </div>
+    <van-overlay :show="show">
+      <div class="wrapper" >
+        <div class="block" style="text-align:center; display:flex; align-items:center; justify-content:center" >
+          <van-loading size="24px" vertical>
+            加载中...
+          </van-loading>
+        </div>
+      </div>
+    </van-overlay>
   </div>
 </template>
 
@@ -25,8 +34,9 @@ import firstplay from '../../views/first/Firstplay'
 import Aslide0 from '@/views/All/Aslide0'
 import uri from '@/config/uri'
 import Vue from 'vue';
-import { NavBar } from 'vant';
-
+import { NavBar ,Overlay,Loading } from 'vant';
+Vue.use(Overlay);
+Vue.use(Loading);
 Vue.use(NavBar);
 export default {
   data(){
@@ -35,6 +45,7 @@ export default {
       current:"Aslide0",
       bigTitle:"",
       mainTitle:'',
+      show:true
     }
   },
   components:{
@@ -49,6 +60,7 @@ export default {
         this.title = ret.data.data
         this.mainTitle = ret.data.data[ret.data.data.length-1].title
         console.log(this.mainTitle)
+        this.show=false
       })
     }else{
       this.$http.get(uri.allHotcourseTitle).then((ret)=>{
@@ -56,6 +68,8 @@ export default {
         this.title = ret.data.data
         this.mainTitle = '热门好课'
         console.log(this.mainTitle)
+        this.show=false
+
       }
     )}
   },
@@ -90,5 +104,12 @@ export default {
   .virtual{
     margin-bottom:80px;
   }
-
+  .block {
+    width: 80px;
+    height: 80px;
+    background:rgba(0,0,0,0.7)
+  }
+  .van-overlay{
+    background:rgba(0,0,0,0)
+  }
 </style>
