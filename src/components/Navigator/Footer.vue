@@ -41,7 +41,7 @@ export default {
     }
   },
   created(){
-    let url = [ '/' , '/mtstudy' , '/cart' , '/personal']
+    let url = [ '/' , '/mystudy' , '/cart' , '/personal']
     console.log(this.$route.path)
     this.active = url.indexOf(this.$route.path) > 0 ? url.indexOf(this.$route.path) : 0
     console.log(this.active)

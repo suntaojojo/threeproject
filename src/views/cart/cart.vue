@@ -88,6 +88,10 @@ export default {
           i--
         }
       } 
+      //这里的问题解决就是在于:如果没有这一步骤的话,就会出现删除之后任然会有钱数的显示但是此时我已经将其删除了
+      this.result.length = 0
+      this.money = 0
+      //但是如果我加上这一步骤就不会出现金属的显示了
     },
     change(){
       this.checked = this.result.length != 5 ? false : true
