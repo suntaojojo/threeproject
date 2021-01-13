@@ -2,7 +2,7 @@
     <van-form @submit="onSubmit">
       <div class="logo">
         <p>
-           <van-icon name="arrow-left" size="2rem" @click="back()"/>
+           <van-icon style="margin-top: 10px; margin-left: 5px" name="arrow-left" size="1.5rem" @click="back()"/>
         </p>
          <div>
            <img src="../../assets/download.png">
@@ -24,19 +24,20 @@
     :rules="[{ required: true, message: '请填写密码' }]"
   />
   <div style="margin: 16px;">
-    <van-button round block type="info" native-type="submit" style="background-color:red">提交</van-button>
+    <van-button round block type="info" native-type="submit" style="background-color:rgba(255,0,0,.5); border-radius: 5px; margin-top: 50px; font-size: 16px; letter-spacing: 2px; outline: none">登录</van-button>
   </div>
   <div class="footer">
     <van-checkbox 
     v-model="checked" 
     shape="square" 
     checked-color="red"
+    style="font-size: 12px"
     >同意
     <span><a href="" style="color:blue">用户注册协议</a></span>
       和
       <span><a href="" style="color:blue">隐私政策</a></span>
       </van-checkbox>
-    <p><a href="">忘记密码？</a><a href="">注册/验证码登录</a></p>
+    <p><a href="">忘记密码？</a><a href="">注册&nbsp;/&nbsp;验证码登录</a></p>
    </div>
 </van-form>
   
@@ -89,8 +90,8 @@ export default {
   margin-top:0;
 }
 .logo>div{
-  width: 74px;
-  height: 74px;
+  width: 82px;
+  height: 82px;
   position: absolute;
   left: 0;
   top: 0;
@@ -111,7 +112,8 @@ export default {
   justify-content:space-between;
 }
 .footer>p>a{
-   color:black;
+   color: rgba(0,0,0,.6);
+   font-size: 12px;
 }
 
 </style>
