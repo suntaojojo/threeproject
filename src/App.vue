@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Footer v-show="$store.state.global.is_show"></Footer>
+    <Footer v-if="$store.state.global.is_show"></Footer>
     <router-view/>
   </div>
 </template>

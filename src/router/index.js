@@ -27,5 +27,19 @@ const router = new VueRouter({
   routes,
   mode:'history'
 })
-
+import store from '@/store/index'
+router.beforeEach((to, from, next) => {
+  // ...
+  console.log(to , from)
+  if(store.state.user._token){
+    next()
+  }else{
+    var url = ['/cart' , '/personal']
+    if(url.includes(to.path)){
+      router.push('/login')
+    }else{
+      next()
+    }
+  }
+})
 export default router

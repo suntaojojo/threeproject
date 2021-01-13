@@ -9,8 +9,8 @@
          </div>
       </div>
   <van-field
-    v-model="username"
-    name="username"
+    v-model="mobile"
+    name="mobile"
     label="用户名"
     placeholder="用户名"
     :rules="[{ required: true, message: '请填写用户名' }]"
@@ -47,17 +47,18 @@
 
 <script>
 import Vue from 'vue';
-import { Form,Field,Button,Icon,Checkbox, CheckboxGroup } from 'vant';
+import { Form,Field,Button,Icon,Checkbox, CheckboxGroup , Toast } from 'vant';
 Vue.use(Form);
 Vue.use(Field)
 Vue.use(Button);
 Vue.use(Icon);
 Vue.use(Checkbox);
 Vue.use(CheckboxGroup);
+Vue.use(Toast);
 export default {
      data() {
     return {
-      username: '',
+      mobile: '',
       password: '',
       checked:false,
       pattern: /^1[3-9]\d{9}$/,
@@ -66,11 +67,19 @@ export default {
   methods: {
     onSubmit(values) {
       console.log('submit', values);
+      this.$http.post('http://127.0.0.1:2004/login' , values).then(ret => {
+        console.log(ret)
+        if(ret.message == "ok"){
+          Toast.success('登录成功')
+          this.$router.push('/personal')
+        }else{
+          Toast.fail('登录失败')
+        }
+      })
     },
     back(){
       this.$router.back()
     }
-
   },
   created(){
     this.$store.commit('global/isShow' , false)

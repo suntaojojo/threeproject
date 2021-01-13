@@ -52,7 +52,8 @@ export default {
       checked:false,
       cartList:[],
       money:0,
-      is_show:true
+      is_show:true,
+      from:''
     };
   },
   filters:{
@@ -100,7 +101,8 @@ export default {
       this.$refs.checkboxGroup.toggleAll(this.checked ? true : false);
     },
     onClickLeft() {
-      this.$router.back()
+      // console.log(this)
+      this.$router.push('/')
     },
     onClickRight() {
       this.is_show = !this.is_show
@@ -116,8 +118,9 @@ export default {
   created(){
     this.$store.commit('global/isShow' , false)
     this.$http.get(url.allHotcourse).then(ret=>{
-      this.cartList = ret.data.data
-      window.localStorage.setItem('cartList', JSON.stringify(ret.data.data))
+      console.log(ret.data)
+      this.cartList = ret.data
+      window.localStorage.setItem('cartList', JSON.stringify(this.cartList))
     })
   },
   beforeDestroy(){
@@ -128,6 +131,25 @@ export default {
   },
   mounted(){
     this.cartList = JSON.parse(window.localStorage.getItem('cartList'))
+  },
+  beforeRouteEnter (to, from, next) {
+    console.log(to , from)
+    next()
+    // 在渲染该组件的对应路由被 confirm 前调用
+    // 不！能！获取组件实例 `this`（这个时候还没有进入到to对应的组件中，所以拿不到this）
+    // 因为当守卫执行前，组件实例还没被创建
+  },
+  beforeRouteUpdate (to, from, next) {
+    next()
+    // 在当前路由改变，但是该组件被复用时调用
+    // 举例来说，对于一个带有动态参数的路径 /foo/:id，在 /foo/1 和 /foo/2 之间跳转的时候，
+    // 由于会渲染同样的 Foo 组件，因此组件实例会被复用。而这个钩子就会在这个情况下被调用。
+    // 可以访问组件实例 `this`
+  },
+  beforeRouteLeave (to, from, next) {
+    next()
+    // 导航离开该组件的对应路由时调用
+    // 可以访问组件实例 `this`
   }
 }
 </script>

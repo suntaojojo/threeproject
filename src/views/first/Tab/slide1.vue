@@ -116,7 +116,6 @@ export default {
   },
   methods:{
     goFreeAll(){
-      console.log('现在我们要去All')
       this.$router.push({
         path:'/modeList',
         query:{id:32,title:'免费公开课'}
@@ -124,8 +123,6 @@ export default {
 
     },
     goHotspot(){
-      console.log('现在我们要去热点课程')
-      
       this.$router.push({
         path:'/modeList',
         query:{id:45 , title:'热门好课'}
@@ -140,11 +137,10 @@ export default {
   },
   created(){
     this.$http.get(uri.bannerlist).then(ret =>{
-      console.log(ret , ret.data.data.model6.goods_list)
-      this.bannerList = ret.data.data.model2
-      this.freeList = ret.data.data.model4.goods_list
-      this.hotList = ret.data.data.model6.goods_list
-      console.log(this.hotList)
+      console.log(ret.data)
+      this.bannerList = ret.data.model2
+      this.freeList = ret.data.model4.goods_list
+      this.hotList = ret.data.model6.goods_list
       this.show = false
     })
   },
