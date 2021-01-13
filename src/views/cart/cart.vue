@@ -1,38 +1,38 @@
 <template>
 <div>
-  <div id="header">
-  <van-nav-bar
-    title="购物车"
-  >
-  <div slot="left" @click="onClickLeft">&lt;</div>
-  <div slot="right" v-show="is_show" @click="onClickRight">管理</div>
-  <div slot="right" v-show="!is_show" @click="onClickRight">完成</div>
-  </van-nav-bar>
-  </div>
-<van-checkbox-group v-model="result" ref="checkboxGroup"  @change="change">
-  <div id="big" v-for="(item , index) in cartList" :key="index" >
-      <van-checkbox id="meddil" :name="item.price"  label-disabled >
-        <template #default>
-          <img class="cartImg"  :src="item.course_cover" width="80px" height="80px" alt="">
-          <div class="cartTitle">
-            <span>  
-              {{item.title}}
-            </span> 
-            <p class="num">
-              ￥{{item.price | priceChange}}
-            </p>
-          </div>
-        </template>
-      </van-checkbox>
-  </div>
-</van-checkbox-group>
-<van-submit-bar v-show="is_show" :price="Money" button-text="提交订单" @submit="onSubmit" >
-  <van-checkbox v-model="checked" @click="checkAll()">全选</van-checkbox>
-</van-submit-bar>
-<van-submit-bar v-show="!is_show"  button-text="删除" @submit="onDel" >
-  <van-checkbox v-model="checked" :price="123" id="Left" @click="checkAll()" suffix-label="1231">全部</van-checkbox>
-  <div id="rIGHE">11111111111111111111111111</div>
-</van-submit-bar>
+    <div id="header">
+      <van-nav-bar
+        title="购物车"
+      >
+      <div slot="left" @click="onClickLeft">&lt;</div>
+      <div slot="right" v-show="is_show" @click="onClickRight">管理</div>
+      <div slot="right" v-show="!is_show" @click="onClickRight">完成</div>
+      </van-nav-bar>
+    </div>
+    <van-checkbox-group v-model="result" ref="checkboxGroup"  @change="change">
+      <div id="big" v-for="(item , index) in cartList" :key="index" >
+          <van-checkbox id="meddil" :name="item.price"  label-disabled >
+            <template #default>
+              <img class="cartImg"  :src="item.course_cover" width="80px" height="80px" alt="">
+              <div class="cartTitle">
+                <span>  
+                  {{item.title}}
+                </span> 
+                <p class="num">
+                  ￥{{item.price | priceChange}}
+                </p>
+              </div>
+            </template>
+          </van-checkbox>
+      </div>
+    </van-checkbox-group>
+    <van-submit-bar v-show="is_show" :price="Money" button-text="提交订单" @submit="onSubmit" >
+      <van-checkbox v-model="checked" @click="checkAll()">全选</van-checkbox>
+    </van-submit-bar>
+    <van-submit-bar v-show="!is_show"  button-text="删除" @submit="onDel" >
+      <van-checkbox v-model="checked" :price="123" id="Left" @click="checkAll()" suffix-label="1231">全部</van-checkbox>
+      <div id="rIGHE">11111111111111111111111111</div>
+    </van-submit-bar>
 </div>
 
 </template>
