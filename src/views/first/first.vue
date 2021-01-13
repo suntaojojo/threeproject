@@ -84,6 +84,7 @@ export default Vue.extend({
     .swiper-slide{
       font-size:15px;
       padding:10px 0;
+      color:#666666;
     }
   }
 </style>

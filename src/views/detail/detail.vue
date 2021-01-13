@@ -1,12 +1,13 @@
 <template>
 <div>
-    <van-row gutter="20">
-    <van-col span="8">
-    <van-icon name="arrow-left" size="30px"/>
-    </van-col>
-    <van-col ><b style="font-size:25px">详情页面</b></van-col>
-    <van-col span="8"></van-col>
-   </van-row>
+    <div id="header">
+      <van-nav-bar
+        title="课程详情"
+      >
+      <div slot="left" @click="onClickLeft">&lt;</div>
+      <div slot="right" >❤</div>
+      </van-nav-bar>
+    </div>
    <div class="middle">
      <img src="../../assets/down.jpg">
       <p>【0元领】《恋词序列二：考研英语真题词汇5500词》配套视频课</p>
@@ -23,7 +24,7 @@
 
 <script>
 import Vue from 'vue';
-import {Icon,GridItem, Col, Row,CountDown,SwipeCell,Card } from 'vant';
+import {Icon,GridItem, Col, Row,CountDown,SwipeCell,Card  , NavBar} from 'vant';
 import "@/assets/font/iconfont.css";
 Vue.use(Icon);
 Vue.use(GridItem);
@@ -32,8 +33,28 @@ Vue.use(Row);
 Vue.use(CountDown);
 Vue.use(SwipeCell);
 Vue.use(Card);
+Vue.use(NavBar);
+import url from "@/config/uri"
 export default {
- 
+  data(){
+    return {
+      time:11110
+    }
+  },
+  methods:{
+    onClickLeft(){
+      this.$router.back()
+    }
+  },
+  created(){
+    console.log(this.$route.query.id)
+    let id = this.$route.query.id
+    if(id==1){
+      this.$http.get(url.courseOne).then(ret=>{
+        console.log(ret)
+      })
+    }
+  }
 }
 </script>
 <style scoped>

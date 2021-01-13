@@ -24,5 +24,8 @@ export default {
   allFreecourse:prefix + "/module/classify/list?id=32&classify_id=0&page=1&limit=5",
   allHotcourseTitle:prefix + "/module/classify?id=45",
   allHotcourse:prefix + "/module/classify/list?id=45&classify_id=0&page=1&limit=5",
-  bannerlist:prefix + "/module/all?rel_id=13&banner_type_id=4"
+  bannerlist:prefix + "/module/all?rel_id=13&banner_type_id=4",
+  courseOne: prefix + "/api/app/courseInfo/basis_id=1027/st=1?basis_id=1027&st=1",
+  courseTwo:prefix+"/api/app/courseInfo/basis_id=290/st=1?basis_id=290&st=1",
+  courseThree:prefix+"/api/app/courseInfo/basis_id=1026/st=1?basis_id=1026&st=1"
 }

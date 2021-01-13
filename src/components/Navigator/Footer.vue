@@ -5,7 +5,7 @@
         <van-icon class-prefix="iconfont icon-home" slot="icon"></van-icon>
         <span> 首页</span>
       </van-tabbar-item>
-      <van-tabbar-item @click="change('/mtstudy')">
+      <van-tabbar-item @click="change('/mystudy')">
         <van-icon class-prefix="iconfont icon-wodekecheng" slot="icon" />
         <span>我的课程</span>         
       </van-tabbar-item>

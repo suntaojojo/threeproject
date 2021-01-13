@@ -35,7 +35,7 @@
       <div class="nav-content" slot="content">
         <van-grid :column-num="2" :key="1" >
             <template v-for="(item , index) in freeList">
-          <van-grid-item  :icon="item.course_cover" :text="item.title" >
+          <van-grid-item  :icon="item.course_cover" :text="item.title" @click="todoDetail">
               <div  slot="text">
                 <p class="content-title">{{item.title}}</p>
                 <div class="content-footer">
@@ -76,6 +76,15 @@
         </div>
       </smallnav>
     </div>
+    <van-overlay :show="show">
+      <div class="wrapper" >
+        <div class="block" style="text-align:center; display:flex; align-items:center; justify-content:center" >
+          <van-loading size="24px" vertical>
+            加载中...
+          </van-loading>
+        </div>
+      </div>
+    </van-overlay>
   </div>
 </template>
 
@@ -88,18 +97,21 @@ Vue.use(VueLazyload, {
 import smallnav from '@/components/Navigator/smallnav'
 import uri from '@/config/uri'  
 import fullCart from '@/components/Card/fullCart'
-import { Grid, GridItem } from 'vant';
+import { Grid, GridItem ,Overlay,Loading} from 'vant';
 
 Vue.use(Grid);
 Vue.use(GridItem);
+Vue.use(Overlay);
+Vue.use(Loading);
 
 import autoPlay from '@/components/autoPlay/autoplay'
 export default {
   data(){
     return {
-      bannerList:[1 , 2,2,3,4,5,5],
+      bannerList:[1,2,2,3,4,5,5],
       freeList:[],
-      hotList:[]
+      hotList:[],
+      show:true,
     }
   },
   methods:{
@@ -118,6 +130,9 @@ export default {
         path:'/modeList',
         query:{id:45 , title:'热门好课'}
       })
+    },
+    todoDetail(){
+      this.$router.push({path:"/detail",query:{id:1}})
     }
   },
   mounted(){
@@ -130,6 +145,7 @@ export default {
       this.freeList = ret.data.data.model4.goods_list
       this.hotList = ret.data.data.model6.goods_list
       console.log(this.hotList)
+      this.show = false
     })
   },
   components:{
@@ -172,5 +188,19 @@ export default {
      height:18px;
      overflow:hidden;
    }
-    
+  .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .block {
+    width: 80px;
+    height: 80px;
+    background:rgba(0,0,0,0.7)
+  }
+  .van-overlay{
+    background:rgba(0,0,0,0)
+  }
 </style>
