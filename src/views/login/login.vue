@@ -1,5 +1,6 @@
 <template>
-    <van-form @submit="onSubmit">
+    <div>
+      <van-form @submit="onSubmit">
       <div class="logo">
         <p>
            <van-icon style="margin-top: 10px; margin-left: 5px" name="arrow-left" size="1.5rem" @click="back()"/>
@@ -40,6 +41,20 @@
     <p><a href="">忘记密码？</a><a href="">注册&nbsp;/&nbsp;验证码登录</a></p>
    </div>
 </van-form>
+
+  <van-overlay :show="show" @click="show = false">
+  <div class="wrapper" @click.stop>
+    <div class="block" style="text-align:center; display:flex; align-items:center; justify-content:center" >
+      <van-loading size="24px" vertical>
+            登录中...
+      </van-loading>
+    </div>
+  </div>
+</van-overlay>
+
+     
+
+    </div>
   
 
 </template>
@@ -47,7 +62,7 @@
 
 <script>
 import Vue from 'vue';
-import { Form,Field,Button,Icon,Checkbox, CheckboxGroup , Toast } from 'vant';
+import { Form,Field,Button,Icon,Checkbox, CheckboxGroup , Toast ,Overlay,Loading} from 'vant';
 Vue.use(Form);
 Vue.use(Field)
 Vue.use(Button);
@@ -55,6 +70,8 @@ Vue.use(Icon);
 Vue.use(Checkbox);
 Vue.use(CheckboxGroup);
 Vue.use(Toast);
+Vue.use(Overlay);
+Vue.use(Loading);
 export default {
      data() {
     return {
@@ -62,15 +79,17 @@ export default {
       password: '',
       checked:false,
       pattern: /^1[3-9]\d{9}$/,
+      show:false
     };
   },
   methods: {
     onSubmit(values) {
+      this.show=true
       console.log('submit', values);
       this.$http.post('http://127.0.0.1:2004/login' , values).then(ret => {
         console.log(ret)
         if(ret.message == "ok"){
-          Toast.success('登录成功')
+          this.show=false
           this.$router.push('/personal')
         }else{
           Toast.fail('登录失败')
@@ -78,7 +97,7 @@ export default {
       })
     },
     back(){
-      this.$router.back()
+      this.$router.back('/')
     }
   },
   created(){
@@ -124,5 +143,18 @@ export default {
    color: rgba(0,0,0,.6);
    font-size: 12px;
 }
-
+   .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+  .block {
+    width: 80px;
+    height: 80px;
+    background:rgba(0,0,0,0.7)
+  }
+  .van-overlay{
+    background:rgba(0,0,0,0)
+  }
 </style>

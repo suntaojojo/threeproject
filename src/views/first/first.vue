@@ -20,7 +20,7 @@
     <!-- 轮播图 -->
     <!-- 这里轮播图出现了一个问题, 如果单独只使用找个轮播图没有任何的问题,但是如果我将slide中的轮播图加进来就会导致,找个轮播图出问题  解决办法会不会是因为 key值的事 ,如果在渲染的时候在子组件中加如key值让他重新渲染会不会解决找个问题
     这里的问题已经解决了 解决方法  将第二个 swiper换成了 vant -->
-    <firstplay >
+    <firstplay :key="titleList.length">
       <template v-for="(item , index) in titleList">
           <div class="swiper-slide" @click="change('slide1',$event , index)" :key="index">{{item.name}}</div>
       </template>
@@ -70,7 +70,7 @@ export default Vue.extend({
   },
   created(){
     this.$http.get(uri.firstTitle).then(ret=>{
-      this.titleList = ret.data.data
+      this.titleList = ret.data
     })
     
   }

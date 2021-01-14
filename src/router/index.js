@@ -7,6 +7,7 @@ import Personal from '@/router/modules/personal/personal'
 import modeList from '@/router/modules/all/modeList'
 import Login from '@/router/modules/login/login'
 import Detail from '@/router/modules/detail/detail'
+import Leave from '@/views/All/leave'
 Vue.use(VueRouter)
 
 const originalPush = VueRouter.prototype.push;
@@ -21,6 +22,7 @@ const routes = [
   modeList,
   Login,
   Detail,
+  {path:'/leave' , component:Leave}
 ]
 
 const router = new VueRouter({

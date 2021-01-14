@@ -56,16 +56,16 @@ export default {
     console.log(this.$route.query.id)
     if(this.$route.query.id == 32){
       this.$http.get(uri.allFreecourseTitle).then(ret=>{
-        console.log(ret.data.data , '找个是标题的地方')
-        this.title = ret.data.data
-        this.mainTitle = ret.data.data[ret.data.data.length-1].title
+        console.log(ret , '找个是标题的地方')
+        this.title = ret.data
+        this.mainTitle = ret.data[ret.data.length-1].title
         console.log(this.mainTitle)
         this.show=false
       })
     }else{
       this.$http.get(uri.allHotcourseTitle).then((ret)=>{
-        console.log(ret.data.data , '找个是标题的地方')
-        this.title = ret.data.data
+        console.log(ret.data , '找个是标题的地方')
+        this.title = ret.data
         this.mainTitle = '热门好课'
         console.log(this.mainTitle)
         this.show=false

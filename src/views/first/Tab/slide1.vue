@@ -184,13 +184,18 @@ export default {
      height:18px;
      overflow:hidden;
    }
-  .wrapper {
+    .wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
   }
 
+  .block {
+    width: 120px;
+    height: 120px;
+    background-color: #fff;
+  }
   .block {
     width: 80px;
     height: 80px;

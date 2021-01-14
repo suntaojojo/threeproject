@@ -40,17 +40,17 @@ export default {
     if(this.$route.query.id == 45){
       console.log('热门')
       this.$http.get(uri.allHotcourse).then(ret=>{
-        console.log(ret.data.data , 123123123123)
-        this.allList = ret.data.data
-        this.teacher = ret.data.data[0].teacher
+        console.log(ret.data , 123123123123)
+        this.allList = ret.data
+        this.teacher = ret.data[0].teacher
         console.log(this.teacher)
       })
     }else{
       console.log('免费')
       this.$http.get(uri.allFreecourse).then(ret=>{
-        console.log(ret.data.data , 123123123123)
-        this.allList = ret.data.data
-        this.teacher = ret.data.data[0].teacher
+        console.log(ret.data , 123123123123)
+        this.allList = ret.data
+        this.teacher = ret.data[0].teacher
         console.log(this.teacher)
       })
     }

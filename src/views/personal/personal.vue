@@ -69,9 +69,9 @@
               <van-grid-item icon="search" url="/vant/mobile.html">
               <van-icon class-prefix="iconfont icon-yijianfankui" size="1.5rem" color="rgba(72,61,139,.6)"/>
               <span style="font-size: 12px; margin-top: 15px">意见反馈</span></van-grid-item>
-              <van-grid-item icon="home-o" url="/vant/mobile.html">
+              <van-grid-item icon="home-o" @click="gotoleave">
               <van-icon class-prefix="iconfont icon-shezhi" size="1.5rem" color="rgba(72,61,139,.6)"/>
-              <span style="font-size: 12px; margin-top: 15px">设置</span></van-grid-item>
+              <span style="font-size: 12px; margin-top: 15px" >设置</span></van-grid-item>
             </van-grid>
             </div>
         </div>
@@ -91,6 +91,11 @@ export default {
   data(){
     return {
       userInfo:'',
+    }
+  },
+  methods:{
+    gotoleave(){
+      this.$router.push('/leave')
     }
   },
   created(){
